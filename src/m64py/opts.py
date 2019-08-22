@@ -21,6 +21,12 @@ from m64py.core.defs import FRONTEND_VERSION
 usage = 'usage: %prog <romfile>'
 parser = OptionParser(usage=usage, version="M64Py Version %s" % FRONTEND_VERSION)
 parser.add_option("-v", "--verbose", action="store_true", dest="verbose", help="show verbose output")
+parser.add_option("-s", "--savedir", action="store", type="string", dest="savedir", help="specify save directory")
+parser.add_option("-c", "--sshotdir", action="store", type="string", dest="sshotdir", help="specify screenshot directory")
+parser.add_option("-f", "--fullscreen", action="store_true", dest="fullscreen", help="start fullscreen")
 opts, args = parser.parse_args()
 
 VERBOSE = opts.verbose
+SAVE_DIR = opts.savedir
+SCREENSHOT_DIR = opts.sshotdir
+FULLSCREEN = opts.fullscreen

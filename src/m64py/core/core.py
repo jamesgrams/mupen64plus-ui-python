@@ -27,6 +27,9 @@ from m64py.loader import load, unload_library
 from m64py.frontend.log import log
 from m64py.utils import version_split
 from m64py.opts import VERBOSE
+from m64py.opts import SAVE_DIR
+from m64py.opts import SCREENSHOT_DIR
+from m64py.opts import FULLSCREEN
 from m64py.archive import ROM_TYPE
 from m64py.core.vidext import vidext
 
@@ -156,6 +159,14 @@ class Core:
             if use_vidext:
                 self.override_vidext()
             self.config = Config(self)
+            if SAVE_DIR is not None:
+                self.config.open_section("Core")
+                self.config.set_parameter("SaveSRAMPath", SAVE_DIR)
+            if SCREENSHOT_DIR is not None:
+                self.config.open_section("Core")
+                self.config.set_parameter("ScreenshotPath", SCREENSHOT_DIR)
+            if FULLSCREEN is not None:
+                self.core_state_set(M64CORE_VIDEO_MODE, M64VIDEO_FULLSCREEN)
         else:
             log.debug("core_startup()")
             log.warn("error starting '%s' library" % self.core_name)
