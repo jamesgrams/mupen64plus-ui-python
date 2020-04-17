@@ -4,3 +4,11 @@ src/m64py.egg-info/
 
 # Files
 dist/*.egg
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# Resources
+*_ui.py
+*_rc.py
